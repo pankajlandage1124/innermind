@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="InnerMind Decision Room — think clearly before making important decisions."
+    >
+
+    <title>Decision Room — InnerMind</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<header class="navbar">
+
+    <a href="index.html" class="brand">
+        Inner<span>Mind</span>
+    </a>
+
+    <nav class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="mind.html">Mind</a>
+
+        <a href="peace.html">Peace</a>
+
+        <a href="community.html">Community</a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="container">
+
+
+    <div class="page-intro">
+
+        <div class="label">
+            DECISION ROOM
+        </div>
+
+        <h1>
+            Don't rush the decision.
+        </h1>
+
+        <p class="description">
+
+            Good decisions don't always come from
+            having more information.
+
+            Sometimes they come from separating
+            facts, emotions, values and consequences.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         DECISION INPUT
+    ========================= -->
+
+    <div class="card">
+
+        <h2 class="card-title">
+            1. Define the decision
+        </h2>
+
+        <p class="card-description">
+
+            Write the decision as clearly as possible.
+
+        </p>
+
+        <textarea
+            id="decision"
+            placeholder="Example: Should I accept this new opportunity?"
+        ></textarea>
+
+    </div>
+
+
+
+    <!-- =========================
+         OPTION A / B
+    ========================= -->
+
+    <div class="card">
+
+        <h2 class="card-title">
+            2. What are your options?
+        </h2>
+
+        <p class="card-description">
+
+            Keep the options simple.
+
+        </p>
+
+        <input
+            id="optionA"
+            placeholder="Option A"
+        >
+
+        <input
+            id="optionB"
+            placeholder="Option B"
+        >
+
+        <input
+            id="optionC"
+            placeholder="Option C (optional)"
+        >
+
+    </div>
+
+
+
+    <!-- =========================
+         PROS AND CONS
+    ========================= -->
+
+    <div class="card">
+
+        <h2 class="card-title">
+            3. Pros & Cons
+        </h2>
+
+        <p class="card-description">
+
+            Think about the consequences of
+            each option.
+
+        </p>
+
+
+        <h3>Option A — Advantages</h3>
+
+        <textarea
+            id="prosA"
+            placeholder="What could go well?"
+        ></textarea>
+
+
+        <h3>Option A — Disadvantages</h3>
+
+        <textarea
+            id="consA"
+            placeholder="What could go wrong?"
+        ></textarea>
+
+
+        <h3>Option B — Advantages</h3>
+
+        <textarea
+            id="prosB"
+            placeholder="What could go well?"
+        ></textarea>
+
+
+        <h3>Option B — Disadvantages</h3>
+
+        <textarea
+            id="consB"
+            placeholder="What could go wrong?"
+        ></textarea>
+
+    </div>
+
+
+
+    <!-- =========================
+         FEAR VS FACT
+    ========================= -->
+
+    <div class="card">
+
+        <h2 class="card-title">
+            4. Fear or fact?
+        </h2>
+
+        <p class="card-description">
+
+            Some decisions feel dangerous because
+            our mind predicts a future.
+
+            Separate what you know from what
+            you're imagining.
+
+        </p>
+
+
+        <label>
+            What do I KNOW?
+        </label>
+
+        <textarea
+            id="facts"
+            placeholder="Things I can verify..."
+        ></textarea>
+
+
+        <label>
+            What am I ASSUMING?
+        </label>
+
+        <textarea
+            id="assumptions"
+            placeholder="Things I think might happen..."
+        ></textarea>
+
+
+        <label>
+            What am I AFRAID of?
+        </label>
+
+        <textarea
+            id="fear"
+            placeholder="The outcome I'm worried about..."
+        ></textarea>
+
+    </div>
+
+
+
+    <!-- =========================
+         BEST / WORST / LIKELY
+    ========================= -->
+
+    <div class="card">
+
+        <h2 class="card-title">
+            5. Three futures
+        </h2>
+
+        <p class="card-description">
+
+            Imagine the same option under
+            three different outcomes.
+
+        </p>
+
+
+        <label>
+            🌟 Best case
+        </label>
+
+        <textarea
+            id="bestCase"
+            placeholder="If everything goes well..."
+        ></textarea>
+
+
+        <label>
+            ⚠️ Worst reasonable case
+        </label>
+
+        <textarea
+            id="worstCase"
+            placeholder="What's the realistic downside?"
+        ></textarea>
+
+
+        <label>
+            🎯 Most likely case
+        </label>
+
+        <textarea
+            id="likelyCase"
+            placeholder="What will probably happen?"
+        ></textarea>
+
+    </div>
+
+
+
+    <!-- =========================
+         VALUES
+    ========================= -->
+
+    <div class="card">
+
+        <h2 class="card-title">
+            6. Values check
+        </h2>
+
+        <p class="card-description">
+
+            Which values matter most in this decision?
+
+        </p>
+
+
+        <div class="options">
+
+            <button
+                class="option"
+                onclick="selectValue(this, 'growth')"
+            >
+                🚀 Growth
+            </button>
+
+            <button
+                class="option"
+                onclick="selectValue(this, 'freedom')"
+            >
+                🕊️ Freedom
+            </button>
+
+            <button
+                class="option"
+                onclick="selectValue(this, 'security')"
+            >
+                🛡️ Security
+            </button>
+
+            <button
+                class="option"
+                onclick="selectValue(this, 'relationships')"
+            >
+                ❤️ Relationships
+            </button>
+
+            <button
+                class="option"
+                onclick="selectValue(this, 'health')"
+            >
+                🌿 Wellbeing
+            </button>
+
+            <button
+                class="option"
+                onclick="selectValue(this, 'purpose')"
+            >
+                🔥 Purpose
+            </button>
+
+            <button
+                class="option"
+                onclick="selectValue(this, 'learning')"
+            >
+                📚 Learning
+            </button>
+
+        </div>
+
+
+        <p
+            id="selectedValue"
+            style="margin-top:20px;color:#999;"
+        ></p>
+
+    </div>
+
+
+
+    <!-- =========================
+         FUTURE SELF
+    ========================= -->
+
+    <div class="card">
+
+        <h2 class="card-title">
+            7. Future-self test
+        </h2>
+
+        <p class="card-description">
+
+            Imagine yourself one year from now.
+
+        </p>
+
+
+        <textarea
+            id="futureSelf"
+            placeholder="If I choose this option, what might my future self think?"
+        ></textarea>
+
+    </div>
+
+
+
+    <!-- =========================
+         REGRET TEST
+    ========================= -->
+
+    <div class="card">
+
+        <h2 class="card-title">
+            8. Regret test
+        </h2>
+
+        <p class="card-description">
+
+            Which regret would be harder to live with?
+
+        </p>
+
+
+        <div class="options">
+
+            <button
+                class="option"
+                onclick="selectRegret(this, 'try')"
+            >
+                I may regret trying.
+            </button>
+
+            <button
+                class="option"
+                onclick="selectRegret(this, 'nottry')"
+            >
+                I may regret not trying.
+            </button>
+
+            <button
+                class="option"
+                onclick="selectRegret(this, 'neither')"
+            >
+                Neither feels significant.
+            </button>
+
+        </div>
+
+
+        <p
+            id="regretResult"
+            style="margin-top:20px;color:#999;"
+        ></p>
+
+    </div>
+
+
+
+    <!-- =========================
+         OPPORTUNITY COST
+    ========================= -->
+
+    <div class="card">
+
+        <h2 class="card-title">
+            9. Opportunity cost
+        </h2>
+
+        <p class="card-description">
+
+            Choosing one path usually means
+            giving something else up.
+
+        </p>
+
+
+        <textarea
+            id="opportunity"
+            placeholder="If I choose this, what am I giving up?"
+        ></textarea>
+
+    </div>
+
+
+
+    <!-- =========================
+         FINAL REFLECTION
+    ========================= -->
+
+    <div class="card">
+
+        <h2 class="card-title">
+            10. Final reflection
+        </h2>
+
+        <p class="card-description">
+
+            Don't ask "What should I do?"
+
+            Ask better questions.
+
+        </p>
+
+
+        <div class="options">
+
+            <button
+                class="option"
+                onclick="finalQuestion(1)"
+            >
+                What would I choose without fear?
+            </button>
+
+            <button
+                class="option"
+                onclick="finalQuestion(2)"
+            >
+                Which option matches my values?
+            </button>
+
+            <button
+                class="option"
+                onclick="finalQuestion(3)"
+            >
+                Which risk can I actually handle?
+            </button>
+
+            <button
+                class="option"
+                onclick="finalQuestion(4)"
+            >
+                What would I advise a friend?
+            </button>
+
+            <button
+                class="option"
+                onclick="finalQuestion(5)"
+            >
+                What information am I still missing?
+            </button>
+
+        </div>
+
+
+        <div
+            id="finalQuestion"
+            class="result"
+        >
+
+            <div class="result-title">
+                Reflection
+            </div>
+
+            <div
+                id="finalQuestionText"
+                class="result-text"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         ANALYZE
+    ========================= -->
+
+    <div class="card">
+
+        <h2 class="card-title">
+            Decision Summary
+        </h2>
+
+        <p class="card-description">
+
+            InnerMind will not choose for you.
+
+            It will help you see whether
+            you've thought about the decision
+            from multiple angles.
+
+        </p>
+
+
+        <button
+            class="primary-button"
+            onclick="analyzeDecision()"
+        >
+            Complete reflection
+        </button>
+
+
+        <div
+            id="summary"
+            class="result"
+        >
+
+            <div class="result-title">
+                Your reflection is complete.
+            </div>
+
+            <div
+                id="summaryText"
+                class="result-text"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+
+<footer>
+
+    InnerMind © 2026
+
+    <br><br>
+
+    Decision tools are for reflection
+    and do not replace professional advice.
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================
+   VALUES
+========================= */
+
+let selectedValue = "";
+
+function selectValue(button, value) {
+
+    document
+        .querySelectorAll(".option")
+        .forEach(item => {
+            item.classList.remove("selected");
+        });
+
+    button.classList.add("selected");
+
+    selectedValue = value;
+
+    const names = {
+
+        growth: "Growth",
+
+        freedom: "Freedom",
+
+        security: "Security",
+
+        relationships: "Relationships",
+
+        health: "Wellbeing",
+
+        purpose: "Purpose",
+
+        learning: "Learning"
+
+    };
+
+    document.getElementById("selectedValue")
+        .innerText =
+        "Your selected value: " + names[value];
+
+}
+
+
+
+/* =========================
+   REGRET
+========================= */
+
+let regretChoice = "";
+
+function selectRegret(button, choice) {
+
+    button
+        .parentElement
+        .querySelectorAll(".option")
+        .forEach(item => {
+            item.classList.remove("selected");
+        });
+
+    button.classList.add("selected");
+
+    regretChoice = choice;
+
+
+    const messages = {
+
+        try:
+            "This suggests the possibility of trying feels more uncomfortable than the possibility of failure.",
+
+        nottry:
+            "This suggests the possibility of missing the opportunity may weigh more heavily on you.",
+
+        neither:
+            "This suggests regret may not be a major factor in this decision."
+
+    };
+
+
+    document.getElementById("regretResult")
+        .innerText =
+        messages[choice];
+
+}
+
+
+
+/* =========================
+   FINAL QUESTIONS
+========================= */
+
+function finalQuestion(number) {
+
+    const questions = {
+
+        1:
+            "If fear disappeared for a moment, what choice would you naturally lean toward?",
+
+        2:
+            "Which option is most consistent with the person you want to become?",
+
+        3:
+            "A risk doesn't automatically mean a bad decision. Ask whether the downside is survivable and manageable.",
+
+        4:
+            "Imagine someone you care about had exactly your situation. What would you tell them?",
+
+        5:
+            "Identify the missing information. If it can realistically be obtained, consider gathering it before deciding."
+
+    };
+
+
+    document.getElementById("finalQuestionText")
+        .innerText =
+        questions[number];
+
+    document.getElementById("finalQuestion")
+        .classList.add("show");
+
+}
+
+
+
+/* =========================
+   FINAL ANALYSIS
+========================= */
+
+function analyzeDecision() {
+
+    const decision =
+        document.getElementById("decision").value.trim();
+
+    const optionA =
+        document.getElementById("optionA").value.trim();
+
+    const optionB =
+        document.getElementById("optionB").value.trim();
+
+    const facts =
+        document.getElementById("facts").value.trim();
+
+    const assumptions =
+        document.getElementById("assumptions").value.trim();
+
+    const futureSelf =
+        document.getElementById("futureSelf").value.trim();
+
+    const opportunity =
+        document.getElementById("opportunity").value.trim();
+
+
+    let completed = 0;
+
+    const fields = [
+
+        decision,
+
+        optionA,
+
+        optionB,
+
+        facts,
+
+        assumptions,
+
+        futureSelf,
+
+        opportunity
+
+    ];
+
+
+    fields.forEach(field => {
+
+        if (field.length > 0) {
+            completed++;
+        }
+
+    });
+
+
+    const summary =
+        document.getElementById("summary");
+
+    const summaryText =
+        document.getElementById("summaryText");
+
+
+    if (!decision) {
+
+        summaryText.innerText =
+            "Start by clearly defining the decision you're facing.";
+
+    }
+
+    else {
+
+        let message =
+
+            "You've completed " +
+            completed +
+            " of the main reflection areas.<br><br>";
+
+
+        if (selectedValue) {
+
+            message +=
+                "You identified a value that matters to you.<br>";
+
+        }
+
+        if (regretChoice) {
+
+            message +=
+                "You considered potential regret.<br>";
+
+        }
+
+        if (facts && assumptions) {
+
+            message +=
+                "You separated facts from assumptions.<br>";
+
+        }
+
+        if (futureSelf) {
+
+            message +=
+                "You considered your future perspective.<br>";
+
+        }
+
+        if (opportunity) {
+
+            message +=
+                "You considered the opportunity cost.<br>";
+
+        }
+
+
+        message +=
+
+            "<br><b>Important:</b> " +
+
+            "InnerMind does not decide for you. " +
+
+            "The purpose of this exercise is to make " +
+
+            "your own reasoning clearer.";
+
+
+        summaryText.innerHTML = message;
+
+    }
+
+
+    summary.classList.add("show");
+
+
+    window.scrollTo({
+
+        top:
+            summary.offsetTop - 100,
+
+        behavior:
+            "smooth"
+
+    });
+
+}
+
+
+</script>
+
+
+</body>
+
+          </html>
