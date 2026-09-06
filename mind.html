@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Mind Check — InnerMind</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="navbar">
+
+    <a href="index.html" class="brand">
+        Inner<span>Mind</span>
+    </a>
+
+    <nav class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="peace.html">Peace</a>
+
+        <a href="decisions.html">Decisions</a>
+
+        <a href="community.html">Community</a>
+
+    </nav>
+
+</header>
+
+
+
+<main class="container">
+
+
+    <div class="page-intro">
+
+        <div class="label">
+            MIND CHECK
+        </div>
+
+        <h1>
+            Pause and notice.
+        </h1>
+
+        <p class="description">
+            Before trying to change how you feel,
+            first understand what you're experiencing.
+        </p>
+
+    </div>
+
+
+
+    <!-- MOOD -->
+
+    <div class="card">
+
+        <h2 class="card-title">
+            How are you feeling right now?
+        </h2>
+
+        <p class="card-description">
+            Choose the option that feels closest.
+        </p>
+
+
+        <div class="options">
+
+            <button
+                class="option"
+                onclick="selectMood(this, 'overwhelmed')"
+            >
+                😣 Overwhelmed
+            </button>
+
+            <button
+                class="option"
+                onclick="selectMood(this, 'anxious')"
+            >
+                😰 Anxious
+            </button>
+
+            <button
+                class="option"
+                onclick="selectMood(this, 'sad')"
+            >
+                😔 Low / Sad
+            </button>
+
+            <button
+                class="option"
+                onclick="selectMood(this, 'angry')"
+            >
+                😡 Angry
+            </button>
+
+            <button
+                class="option"
+                onclick="selectMood(this, 'calm')"
+            >
+                😌 Calm
+            </button>
+
+            <button
+                class="option"
+                onclick="selectMood(this, 'confused')"
+            >
+                🌀 Confused
+            </button>
+
+        </div>
+
+
+        <div id="moodResult" class="result">
+
+            <div class="result-title">
+                A moment of awareness
+            </div>
+
+            <div
+                id="moodText"
+                class="result-text"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ENERGY -->
+
+    <div class="card">
+
+        <h2 class="card-title">
+            How is your mental energy?
+        </h2>
+
+        <p class="card-description">
+            This can help you decide what kind of
+            activity might help right now.
+        </p>
+
+
+        <div class="options">
+
+            <button
+                class="option"
+                onclick="energy('low')"
+            >
+                🔋 Very low
+            </button>
+
+            <button
+                class="option"
+                onclick="energy('medium')"
+            >
+                🔋 Moderate
+            </button>
+
+            <button
+                class="option"
+                onclick="energy('high')"
+            >
+                ⚡ High
+            </button>
+
+        </div>
+
+
+        <div id="energyResult" class="result">
+
+            <div class="result-title">
+                Your next step
+            </div>
+
+            <div
+                id="energyText"
+                class="result-text"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- REFLECTION -->
+
+    <div class="card">
+
+        <h2 class="card-title">
+            One question
+        </h2>
+
+        <p class="card-description">
+            What do you think you need most right now?
+        </p>
+
+
+        <div class="options">
+
+            <button
+                class="option"
+                onclick="reflection('rest')"
+            >
+                🌙 Rest
+            </button>
+
+            <button
+                class="option"
+                onclick="reflection('clarity')"
+            >
+                🔍 Clarity
+            </button>
+
+            <button
+                class="option"
+                onclick="reflection('connection')"
+            >
+                🤝 Connection
+            </button>
+
+            <button
+                class="option"
+                onclick="reflection('action')"
+            >
+                🚶 Action
+            </button>
+
+            <button
+                class="option"
+                onclick="reflection('space')"
+            >
+                🌿 Space
+            </button>
+
+        </div>
+
+
+        <div id="reflectionResult" class="result">
+
+            <div class="result-title">
+                Remember
+            </div>
+
+            <div
+                id="reflectionText"
+                class="result-text"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+
+<footer>
+
+    InnerMind © 2026
+
+    <br><br>
+
+    Reflection tool only.
+    Not a medical diagnosis.
+
+</footer>
+
+
+
+<script>
+
+function selectMood(button, mood) {
+
+    document
+        .querySelectorAll(".option")
+        .forEach(item => {
+            item.classList.remove("selected");
+        });
+
+    button.classList.add("selected");
+
+
+    const messages = {
+
+        overwhelmed:
+        "You don't have to solve everything at once. Reduce the problem to the next small thing you can control.",
+
+        anxious:
+        "Try separating what is happening now from what your mind is predicting might happen.",
+
+        sad:
+        "You don't need to force yourself to feel different immediately. Give the feeling some space.",
+
+        angry:
+        "Strong emotions can contain information, but you don't have to act while the emotion is at its peak.",
+
+        calm:
+        "This may be a useful moment for reflection. What matters most to you right now?",
+
+        confused:
+        "Confusion often becomes clearer when thoughts are written down. Separate facts, assumptions and feelings."
+
+    };
+
+
+    document.getElementById("moodText").innerText =
+        messages[mood];
+
+    document.getElementById("moodResult")
+        .classList.add("show");
+}
+
+
+
+function energy(level) {
+
+    const messages = {
+
+        low:
+        "Choose something gentle: rest, hydration, a short walk or a quiet breathing exercise.",
+
+        medium:
+        "You may have enough energy for a short reflection exercise or one small meaningful task.",
+
+        high:
+        "Use the energy intentionally. Before acting quickly, ask whether the action actually matters."
+
+    };
+
+
+    document.getElementById("energyText").innerText =
+        messages[level];
+
+    document.getElementById("energyResult")
+        .classList.add("show");
+}
+
+
+
+function reflection(type) {
+
+    const messages = {
+
+        rest:
+        "Rest is not always avoidance. Sometimes recovery is the most useful next action.",
+
+        clarity:
+        "Write down the situation and divide it into: what I know, what I assume and what I don't know.",
+
+        connection:
+        "Consider whether there is someone safe and supportive you could talk to.",
+
+        action:
+        "Choose one small action that moves you forward rather than trying to solve everything.",
+
+        space:
+        "Step away from the situation for a few minutes before deciding what to do."
+
+    };
+
+
+    document.getElementById("reflectionText").innerText =
+        messages[type];
+
+    document.getElementById("reflectionResult")
+        .classList.add("show");
+}
+
+</script>
+
+
+</body>
+
+  </html>
