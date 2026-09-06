@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="InnerMind — a space to understand your mind and make better decisions.">
+
+    <title>InnerMind</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            background: #09090b;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            background: rgba(9, 9, 11, 0.88);
+
+            backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid #222225;
+        }
+
+        .brand {
+            font-size: 21px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-mark {
+            color: #9b9bff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: #a6a6ad;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: calc(100vh - 70px);
+
+            display: flex;
+            align-items: center;
+
+            padding: 80px 7%;
+
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+
+            color: #9b9bff;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 9vw, 100px);
+
+            line-height: 0.98;
+
+            letter-spacing: -5px;
+
+            margin-bottom: 30px;
+        }
+
+        .hero h1 span {
+            color: #8f8fff;
+        }
+
+        .hero-description {
+            max-width: 650px;
+
+            color: #a5a5aa;
+
+            font-size: clamp(17px, 2vw, 21px);
+
+            margin-bottom: 38px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 13px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            border: none;
+
+            padding: 14px 23px;
+
+            border-radius: 100px;
+
+            cursor: pointer;
+
+            font-weight: 600;
+
+            transition:
+                transform 0.2s,
+                opacity 0.2s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .button-primary {
+            background: white;
+            color: #09090b;
+        }
+
+        .button-secondary {
+            background: #1b1b20;
+            color: white;
+
+            border: 1px solid #303036;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            max-width: 1400px;
+            margin: auto;
+
+            padding: 100px 7%;
+        }
+
+        .section-label {
+            color: #8f8fff;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(34px, 5vw, 55px);
+
+            line-height: 1.05;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            max-width: 650px;
+
+            color: #929297;
+
+            margin-bottom: 45px;
+        }
+
+        /* =========================
+           FEATURE CARDS
+        ========================= */
+
+        .feature-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(230px, 1fr));
+
+            gap: 18px;
+        }
+
+        .feature-card {
+            background: #131316;
+
+            border: 1px solid #252529;
+
+            border-radius: 24px;
+
+            padding: 28px;
+
+            min-height: 230px;
+
+            transition:
+                transform 0.25s,
+                border-color 0.25s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #44444c;
+        }
+
+        .feature-icon {
+            font-size: 30px;
+
+            margin-bottom: 25px;
+        }
+
+        .feature-card h3 {
+            font-size: 21px;
+
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #89898f;
+
+            font-size: 14px;
+        }
+
+        /* =========================
+           PHILOSOPHY
+        ========================= */
+
+        .philosophy {
+            background: #111114;
+
+            border-top: 1px solid #202024;
+            border-bottom: 1px solid #202024;
+        }
+
+        .quote {
+            max-width: 900px;
+
+            font-size: clamp(30px, 5vw, 60px);
+
+            line-height: 1.08;
+
+            letter-spacing: -2px;
+        }
+
+        .quote span {
+            color: #8f8fff;
+        }
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            text-align: center;
+        }
+
+        .cta-box {
+            background: #141418;
+
+            border: 1px solid #29292f;
+
+            border-radius: 30px;
+
+            padding: 70px 30px;
+        }
+
+        .cta-box h2 {
+            font-size: clamp(35px, 6vw, 65px);
+
+            line-height: 1;
+
+            letter-spacing: -3px;
+
+            margin-bottom: 20px;
+        }
+
+        .cta-box p {
+            color: #929297;
+
+            max-width: 550px;
+
+            margin: 0 auto 30px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            border-top: 1px solid #222225;
+
+            padding: 35px 7%;
+
+            color: #66666c;
+
+            text-align: center;
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 0 5%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding:
+                    60px 5%
+                    80px;
+            }
+
+            .hero h1 {
+                letter-spacing: -3px;
+            }
+
+            section {
+                padding:
+                    75px 5%;
+            }
+
+            .feature-card {
+                min-height: auto;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<header class="navbar">
+
+    <a href="#" class="brand">
+        Inner<span class="brand-mark">Mind</span>
+    </a>
+
+    <nav class="nav-links">
+
+        <a href="#mind">
+            Mind
+        </a>
+
+        <a href="#decision">
+            Decisions
+        </a>
+
+        <a href="#community">
+            Community
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<main>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            MIND × EMOTION × DECISION
+        </div>
+
+        <h1>
+            Understand your
+            <span>mind.</span>
+        </h1>
+
+        <p class="hero-description">
+            InnerMind is a space to pause,
+            understand what you're experiencing,
+            think more clearly and make better decisions.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                href="#mind"
+                class="button button-primary"
+            >
+                Explore your mind
+            </a>
+
+            <a
+                href="#decision"
+                class="button button-secondary"
+            >
+                Enter Decision Room
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CORE FEATURES
+========================= -->
+
+<section id="mind">
+
+    <div class="section-label">
+        THE INNER SPACE
+    </div>
+
+    <h2 class="section-title">
+        Everything begins with
+        understanding yourself.
+    </h2>
+
+    <p class="section-description">
+        InnerMind brings reflection,
+        emotional awareness and decision-making
+        into one place.
+    </p>
+
+
+    <div class="feature-grid">
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">
+                🧠
+            </div>
+
+            <h3>
+                Mind Check
+            </h3>
+
+            <p>
+                Pause and understand
+                what may be happening
+                inside your mind.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">
+                🌿
+            </div>
+
+            <h3>
+                Peace Space
+            </h3>
+
+            <p>
+                Breathing, grounding,
+                reflection and other
+                exercises for mental clarity.
+            </p>
+
+        </article>
+
+
+        <article
+            class="feature-card"
+            id="decision"
+        >
+
+            <div class="feature-icon">
+                ⚖️
+            </div>
+
+            <h3>
+                Decision Room
+            </h3>
+
+            <p>
+                Break difficult decisions
+                into facts, emotions,
+                values and consequences.
+            </p>
+
+        </article>
+
+
+        <article
+            class="feature-card"
+            id="community"
+        >
+
+            <div class="feature-icon">
+                👥
+            </div>
+
+            <h3>
+                Community
+            </h3>
+
+            <p>
+                Find people thinking about
+                similar questions and
+                share perspectives.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">
+                ✍️
+            </div>
+
+            <h3>
+                Journal
+            </h3>
+
+            <p>
+                Put your thoughts into words
+                and create space between
+                thought and reaction.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">
+                🔍
+            </div>
+
+            <h3>
+                Self Reflection
+            </h3>
+
+            <p>
+                Ask better questions about
+                your emotions, choices,
+                habits and direction.
+            </p>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHILOSOPHY
+========================= -->
+
+<section class="philosophy">
+
+    <div class="quote">
+
+        You don't always need
+        someone to tell you
+        <span>what to do.</span>
+
+        Sometimes you need
+        a better way to
+        <span>think.</span>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="cta">
+
+    <div class="cta-box">
+
+        <h2>
+            Start with a pause.
+        </h2>
+
+        <p>
+            Before the next reaction,
+            decision or difficult moment —
+            take a moment to understand
+            what is happening within you.
+        </p>
+
+        <a
+            href="#mind"
+            class="button button-primary"
+        >
+            Begin
+        </a>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div>
+        InnerMind © 2026
+    </div>k
+
+    <br>
+
+    <div>
+        Built for reflection and wellbeing.
+        Not a substitute for professional medical care.
+    </div>
+
+</footer>
+
+
+</body>
+
+  </html>
