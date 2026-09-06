@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Peace Space — InnerMind</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="navbar">
+
+    <a href="index.html" class="brand">
+        Inner<span>Mind</span>
+    </a>
+
+    <nav class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="mind.html">Mind</a>
+
+        <a href="decisions.html">Decisions</a>
+
+        <a href="community.html">Community</a>
+
+    </nav>
+
+</header>
+
+
+
+<main class="container">
+
+
+    <div class="page-intro">
+
+        <div class="label">
+            PEACE SPACE
+        </div>
+
+        <h1>
+            Give your mind some space.
+        </h1>
+
+        <p class="description">
+            Small exercises designed to help you
+            pause, ground yourself and regain clarity.
+        </p>
+
+    </div>
+
+
+
+    <div class="exercise-grid">
+
+
+        <!-- BREATHING -->
+
+        <div class="exercise-card">
+
+            <div class="exercise-icon">
+                🌬️
+            </div>
+
+            <h3>
+                1-Minute Breathing
+            </h3>
+
+            <p>
+                Follow a simple breathing rhythm
+                for one minute.
+            </p>
+
+            <button
+                class="primary-button"
+                onclick="startBreathing()"
+            >
+                Start
+            </button>
+
+        </div>
+
+
+
+        <!-- GROUNDING -->
+
+        <div class="exercise-card">
+
+            <div class="exercise-icon">
+                🌎
+            </div>
+
+            <h3>
+                5-4-3-2-1 Grounding
+            </h3>
+
+            <p>
+                Bring your attention back to
+                your surroundings.
+            </p>
+
+            <button
+                class="primary-button"
+                onclick="startGrounding()"
+            >
+                Begin
+            </button>
+
+        </div>
+
+
+
+        <!-- GRATITUDE -->
+
+        <div class="exercise-card">
+
+            <div class="exercise-icon">
+                🌱
+            </div>
+
+            <h3>
+                Three Good Things
+            </h3>
+
+            <p>
+                Notice three things that were
+                good, useful or meaningful today.
+            </p>
+
+            <button
+                class="primary-button"
+                onclick="showExercise('gratitude')"
+            >
+                Reflect
+            </button>
+
+        </div>
+
+
+
+        <!-- WORRY -->
+
+        <div class="exercise-card">
+
+            <div class="exercise-icon">
+                ☁️
+            </div>
+
+            <h3>
+                Worry Parking
+            </h3>
+
+            <p>
+                Put a worry into words and
+                separate it from the present moment.
+            </p>
+
+            <button
+                class="primary-button"
+                onclick="showExercise('worry')"
+            >
+                Start
+            </button>
+
+        </div>
+
+
+
+        <!-- EMOTION -->
+
+        <div class="exercise-card">
+
+            <div class="exercise-icon">
+                💭
+            </div>
+
+            <h3>
+                Name the Emotion
+            </h3>
+
+            <p>
+                Identify what you're feeling
+                without judging yourself.
+            </p>
+
+            <button
+                class="primary-button"
+                onclick="showExercise('emotion')"
+            >
+                Begin
+            </button>
+
+        </div>
+
+
+
+        <!-- THOUGHT DUMP -->
+
+        <div class="exercise-card">
+
+            <div class="exercise-icon">
+                ✍️
+            </div>
+
+            <h3>
+                Thought Dump
+            </h3>
+
+            <p>
+                Write everything currently
+                occupying your mind.
+            </p>
+
+            <button
+                class="primary-button"
+                onclick="showExercise('dump')"
+            >
+                Write
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- EXERCISE SCREEN -->
+
+    <div
+        id="exerciseScreen"
+        class="exercise-screen"
+        style="display:none;"
+    >
+
+        <div
+            id="instruction"
+            class="instruction"
+        >
+        </div>
+
+        <div
+            id="timer"
+            class="timer"
+        >
+        </div>
+
+        <textarea
+            id="exerciseInput"
+            placeholder="Write here..."
+            style="display:none;"
+        ></textarea>
+
+        <br>
+
+        <button
+            id="exerciseButton"
+            class="primary-button"
+            onclick="closeExercise()"
+        >
+            Done
+        </button>
+
+    </div>
+
+
+</main>
+
+
+
+<footer>
+
+    InnerMind © 2026
+
+    <br><br>
+
+    These exercises are for general wellbeing
+    and self-reflection.
+
+</footer>
+
+
+
+<script>
+
+
+let breathingInterval;
+
+
+function startBreathing() {
+
+    const screen =
+        document.getElementById("exerciseScreen");
+
+    const instruction =
+        document.getElementById("instruction");
+
+    const timer =
+        document.getElementById("timer");
+
+    const input =
+        document.getElementById("exerciseInput");
+
+
+    screen.style.display = "block";
+
+    input.style.display = "none";
+
+
+    let seconds = 60;
+
+
+    function update() {
+
+        timer.innerText =
+            seconds + "s";
+
+        if (seconds <= 45 && seconds > 30) {
+
+            instruction.innerText =
+                "Breathe in slowly";
+
+        } else if (seconds <= 30 && seconds > 15) {
+
+            instruction.innerText =
+                "Breathe out slowly";
+
+        } else if (seconds <= 15) {
+
+            instruction.innerText =
+                "Relax your shoulders";
+
+        } else {
+
+            instruction.innerText =
+                "Get comfortable";
+
+        }
+
+        seconds--;
+
+        if (seconds < 0) {
+
+            clearInterval(breathingInterval);
+
+            instruction.innerText =
+                "Take one final slow breath.";
+
+            timer.innerText =
+                "Complete";
+
+        }
+
+    }
+
+
+    update();
+
+    clearInterval(breathingInterval);
+
+    breathingInterval =
+        setInterval(update, 1000);
+
+}
+
+
+
+function startGrounding() {
+
+    const screen =
+        document.getElementById("exerciseScreen");
+
+    const instruction =
+        document.getElementById("instruction");
+
+    const timer =
+        document.getElementById("timer");
+
+    const input =
+        document.getElementById("exerciseInput");
+
+
+    screen.style.display = "block";
+
+    input.style.display = "none";
+
+    timer.innerText = "";
+
+    instruction.innerHTML =
+
+        "Look around you.<br><br>" +
+
+        "Notice:<br>" +
+
+        "5 things you can see<br>" +
+
+        "4 things you can touch<br>" +
+
+        "3 things you can hear<br>" +
+
+        "2 things you can smell<br>" +
+
+        "1 thing you can taste";
+
+
+}
+
+
+
+function showExercise(type) {
+
+    const screen =
+        document.getElementById("exerciseScreen");
+
+    const instruction =
+        document.getElementById("instruction");
+
+    const timer =
+        document.getElementById("timer");
+
+    const input =
+        document.getElementById("exerciseInput");
+
+
+    screen.style.display = "block";
+
+    timer.innerText = "";
+
+    input.style.display = "block";
+
+
+    const exercises = {
+
+        gratitude:
+            "Write three things you appreciate today.",
+
+        worry:
+            "Write the worry. Then ask: Is there anything I can realistically do about it today?",
+
+        emotion:
+            "Complete this sentence: \"Right now I feel ___ because ___.\"",
+
+        dump:
+            "Write whatever is occupying your mind. Don't edit it. Don't judge it."
+
+    };
+
+
+    instruction.innerText =
+        exercises[type];
+
+}
+
+
+
+function closeExercise() {
+
+    const screen =
+        document.getElementById("exerciseScreen");
+
+    screen.style.display = "none";
+
+    document.getElementById("exerciseInput").value = "";
+
+}
+
+</script>
+
+
+</body>
+
+  </html>
